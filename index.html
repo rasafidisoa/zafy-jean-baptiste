@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Modern Video</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+/* Container */
+.video-card{
+    position:relative;
+    width:600px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 25px 50px rgba(0,0,0,0.6);
+    transition:0.4s;
+}
+
+.video-card:hover{
+    transform:scale(1.05);
+}
+
+/* Video */
+video{
+    width:100%;
+    display:block;
+}
+
+/* Play Button */
+.play-btn{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+    border:none;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.play-btn:hover{
+    background:rgba(255,255,255,0.4);
+    transform:translate(-50%,-50%) scale(1.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="video-card">
+    <video id="myVideo">
+        <source src="video.mp4" type="video/mp4">
+    </video>
+    <button class="play-btn" onclick="togglePlay()">▶</button>
+</div>
+
+<script>
+const video = document.getElementById("myVideo");
+const button = document.querySelector(".play-btn");
+
+function togglePlay(){
+    if(video.paused){
+        video.play();
+        button.innerHTML = "❚❚";
+    } else {
+        video.pause();
+        button.innerHTML = "▶";
+    }
+}
+</script>
+
+</body>
+</html>
